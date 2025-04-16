@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<head>
+    <title>From text to speech</title>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" >
+    <link href="static/css/style.css" rel="stylesheet">
+    {% block styles %}
+        {{ bootstrap.load_css() }}
+    {% endblock %}
+</head>
+<body style="background-image: radial-gradient( circle 311px at 8.6% 27.9%,  rgba(62,147,252,0.57) 12.9%, rgba(239,183,192,0.44) 91.2% );">
+    <div class="container">
+        <h1 class="fw-bold display-4" style="text-align:center;margin-top:180;;font-family:TT Neoris">GENERATE PDF<br>FROM TEXT TO SPEECH</h1>
+        <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+            <div class="input-group mt-3 px-5" id="upload_section" style="text-align:center">
+                <label class="fw-bold">Choose PDF:</label>
+                <input type= "file" name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                <label class="fw-bold">Name MP3 file:</label>
+                <input type="text" name="output" placeholder="output.mp3" >
+                <input type="submit" value="Upload">
+            </div>
+        </form>
+        <div style="text-align:center;" class="mt-4">
+            <audio controls style="text-align:center;">
+                <source src="{{ audio }}" type="audio/mpeg">
+            </audio>
+        </div>
+
+    </div>
+</body>
